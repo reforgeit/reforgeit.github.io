@@ -40,6 +40,32 @@
 }
 
 // =============================================================================
+// ACCESSIBILITY
+// =============================================================================
+
+// Skip-to-content link for keyboard/screen reader users
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--bg-primary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  z-index: 1000;
+  font-family: var(--font-heading);
+
+  &:focus {
+    top: 0;
+  }
+}
+
+// Global focus outline for keyboard navigation
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+// =============================================================================
 // BASE STYLES
 // =============================================================================
 
