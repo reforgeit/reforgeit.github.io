@@ -34,4 +34,4 @@ AWS, Kubernetes, Terraform, GitHub Actions, ArgoCD, Helm, Docker, Python, Bash, 
 
 [Download my CV (PDF)](/assets/files/Milosz_Czajkowski_CV.pdf)
 
-[LinkedIn](https://linkedin.com/in/milosz-czajkowski) | [Email](mailto:mil.czajkowski@gmail.com)
+[LinkedIn](https://linkedin.com/in/milosz-czajkowski) | [Email](mailto:milosz.czajkowski.reforgeit@gmail.com)

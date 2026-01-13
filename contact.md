@@ -12,7 +12,7 @@ Whether you have a specific project in mind or just want to explore options, I'm
 
 For inquiries and async communication:
 
-[mil.czajkowski@gmail.com](mailto:mil.czajkowski@gmail.com)
+[milosz.czajkowski.reforgeit@gmail.com](mailto:milosz.czajkowski.reforgeit@gmail.com)
 
 ### LinkedIn
 
