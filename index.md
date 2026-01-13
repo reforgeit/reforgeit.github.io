@@ -19,4 +19,4 @@ Currently DevOps Technical Lead at Keyloop, where I build internal developer pla
 
 ---
 
-[View Services](/services/) | [Get in Touch](/contact/)
+<a href="/services/" class="btn">View Services</a> <a href="/contact/" class="btn btn-secondary">Get in Touch</a>
