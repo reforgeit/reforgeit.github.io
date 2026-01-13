@@ -7,3 +7,5 @@ Gemfile.lock
 AGENTS.md
 CLAUDE.md
 .claude
+*.pdf
+PLAN.md
