@@ -1547,6 +1547,239 @@ a:not(.btn):not(.nav-link):not(.page-link):not(.site-title):not(.card) {
 }
 
 // =============================================================================
+// PHASE 5: MOBILE EXCELLENCE
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// GLOBAL TOUCH OPTIMIZATIONS
+// ---------------------------------------------------------------------------
+
+// Remove 300ms tap delay on all interactive elements
+a, button, input, select, textarea, [role="button"] {
+  touch-action: manipulation;
+}
+
+// Ensure minimum touch target size (48x48px)
+.btn,
+a.btn,
+.nav-link,
+.page-link,
+.hamburger,
+.mobile-nav-link {
+  min-height: 48px;
+  min-width: 48px;
+}
+
+// Touch feedback - tap highlight color
+a, button, .card, .btn {
+  -webkit-tap-highlight-color: rgba(57, 255, 20, 0.15);
+}
+
+// ---------------------------------------------------------------------------
+// HAMBURGER BUTTON - Mobile menu toggle
+// ---------------------------------------------------------------------------
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 48px;
+  height: 48px;
+  padding: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 200;
+  transition: transform 0.2s ease;
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  @media (max-width: 767px) {
+    display: flex;
+  }
+}
+
+.hamburger-line {
+  width: 24px;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 1px;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease,
+    background 0.25s ease;
+}
+
+// Hamburger to X transformation
+.hamburger[aria-expanded="true"] {
+  .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// MOBILE NAVIGATION - Full-screen overlay
+// ---------------------------------------------------------------------------
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg-primary);
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+
+  // Safe area for notched devices
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+.mobile-nav[aria-hidden="false"] {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-nav-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.mobile-nav-link {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: var(--space-4) var(--space-8);
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover,
+  &:focus {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.mobile-nav-prefix {
+  color: var(--color-primary);
+  margin-right: var(--space-2);
+}
+
+// Staggered entrance for mobile nav links
+.mobile-nav[aria-hidden="false"] .mobile-nav-link {
+  animation: mobileNavSlide 0.3s ease forwards;
+
+  &:nth-child(1) { animation-delay: 0.05s; }
+  &:nth-child(2) { animation-delay: 0.1s; }
+  &:nth-child(3) { animation-delay: 0.15s; }
+  &:nth-child(4) { animation-delay: 0.2s; }
+  &:nth-child(5) { animation-delay: 0.25s; }
+}
+
+@keyframes mobileNavSlide {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// DESKTOP NAVIGATION - Hide hamburger, show nav
+// ---------------------------------------------------------------------------
+
+.site-nav--desktop {
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// TOUCH-SPECIFIC FEEDBACK STYLES
+// ---------------------------------------------------------------------------
+
+@media (max-width: 767px) {
+  // Enhanced button touch states
+  .btn,
+  a.btn {
+    &:active {
+      transform: scale(0.97);
+      opacity: 0.9;
+      transition-duration: 0.05s;
+    }
+  }
+
+  // Card touch feedback
+  .card {
+    &:active {
+      transform: scale(0.98);
+      opacity: 0.95;
+      transition-duration: 0.05s;
+    }
+  }
+
+  // Link touch feedback
+  a:not(.btn):not(.nav-link):not(.site-title):not(.card) {
+    &:active {
+      opacity: 0.7;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// BODY SCROLL LOCK - When mobile nav is open
+// ---------------------------------------------------------------------------
+
+body.nav-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+// ---------------------------------------------------------------------------
+// FOOTER TOUCH TARGETS
+// ---------------------------------------------------------------------------
+
+.site-footer a {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+}
+
+// =============================================================================
 // MINIMA OVERRIDES (clear any remaining defaults)
 // =============================================================================
 

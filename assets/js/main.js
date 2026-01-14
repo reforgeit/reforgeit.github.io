@@ -40,6 +40,65 @@
   }
 
   // ==========================================================================
+  // MOBILE NAVIGATION (Phase 5)
+  // Hamburger menu toggle with accessibility
+  // ==========================================================================
+
+  const hamburger = document.querySelector('.hamburger');
+  const mobileNav = document.querySelector('.mobile-nav');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+  if (hamburger && mobileNav) {
+    function openNav() {
+      hamburger.setAttribute('aria-expanded', 'true');
+      mobileNav.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('nav-open');
+      // Focus first nav link for accessibility
+      if (mobileNavLinks.length > 0) {
+        mobileNavLinks[0].focus();
+      }
+    }
+
+    function closeNav() {
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileNav.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('nav-open');
+    }
+
+    function toggleNav() {
+      const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+      if (isOpen) {
+        closeNav();
+      } else {
+        openNav();
+      }
+    }
+
+    // Click handler
+    hamburger.addEventListener('click', toggleNav);
+
+    // Close on nav link click
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', closeNav);
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && hamburger.getAttribute('aria-expanded') === 'true') {
+        closeNav();
+        hamburger.focus();
+      }
+    });
+
+    // Close on click outside (on the overlay background)
+    mobileNav.addEventListener('click', (e) => {
+      if (e.target === mobileNav) {
+        closeNav();
+      }
+    });
+  }
+
+  // ==========================================================================
   // HERO TYPING ANIMATION (Phase 4)
   // Character-by-character typing effect for hero headline
   // ==========================================================================
