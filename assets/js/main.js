@@ -12,12 +12,28 @@
 
   const header = document.querySelector('.site-header');
 
-  if (header) {
+  const scrollIndicator = document.querySelector('.scroll-indicator');
+
+  if (header || scrollIndicator) {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
+      const scrolled = window.scrollY > 10;
+
+      // Header enhancement
+      if (header) {
+        if (scrolled) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      }
+
+      // Hide scroll indicator after scrolling
+      if (scrollIndicator) {
+        if (window.scrollY > 50) {
+          scrollIndicator.classList.add('hidden');
+        } else {
+          scrollIndicator.classList.remove('hidden');
+        }
       }
     };
 
