@@ -174,6 +174,28 @@
   }
 
   // ==========================================================================
+  // AUTO-STAGGER PAGE CONTENT (Phase 3)
+  // Automatically add animate-on-scroll to page content sections
+  // ==========================================================================
+
+  const pageContent = document.querySelector('.page-content .wrapper');
+  if (pageContent && motionAllowed()) {
+    // Add animate-on-scroll to direct children (h2, p, ul, hr, etc.)
+    const contentElements = pageContent.querySelectorAll(':scope > h2, :scope > h3, :scope > p, :scope > ul, :scope > ol, :scope > hr, :scope > .card, :scope > .btn');
+    let staggerIndex = 1;
+
+    contentElements.forEach((el) => {
+      el.classList.add('animate-on-scroll');
+      el.setAttribute('data-stagger', Math.min(staggerIndex, 6));
+      staggerIndex++;
+      // Reset stagger after hr (section break)
+      if (el.tagName === 'HR') {
+        staggerIndex = 1;
+      }
+    });
+  }
+
+  // ==========================================================================
   // INTERSECTION OBSERVER - Scroll-triggered animations (Phase 3)
   // Animates elements as they enter the viewport
   // ==========================================================================

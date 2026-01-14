@@ -945,6 +945,93 @@ body {
   }
 }
 
+// ---------------------------------------------------------------------------
+// ANIMATED BACKGROUND ORBS - Floating gradient orbs for atmosphere
+// ---------------------------------------------------------------------------
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  animation: float 20s ease-in-out infinite;
+
+  &--primary {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--glow-primary-subtle) 0%, transparent 70%);
+    top: -150px;
+    right: -100px;
+  }
+
+  &--secondary {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+    bottom: -100px;
+    left: -50px;
+    animation-delay: -10s;
+    animation-duration: 25s;
+  }
+
+  &--accent {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 0, 255, 0.08) 0%, transparent 70%);
+    top: 40%;
+    left: 20%;
+    animation-delay: -5s;
+    animation-duration: 30s;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+  50% {
+    transform: translate(-20px, 30px) scale(0.95);
+  }
+  75% {
+    transform: translate(-30px, -10px) scale(1.02);
+  }
+}
+
+// Mobile: smaller, simpler orbs for performance
+@media (max-width: 767px) {
+  .hero-orb {
+    filter: blur(50px);
+    animation-duration: 30s; // Slower = less CPU
+
+    &--primary {
+      width: 250px;
+      height: 250px;
+      top: -80px;
+      right: -50px;
+    }
+
+    &--secondary {
+      width: 180px;
+      height: 180px;
+    }
+
+    &--accent {
+      display: none; // Hide third orb on mobile
+    }
+  }
+}
+
+// Reduced motion: no animation
+@media (prefers-reduced-motion: reduce) {
+  .hero-orb {
+    animation: none;
+  }
+}
+
 .hero-content {
   max-width: 720px;
   width: 100%;
@@ -1400,6 +1487,16 @@ body {
   &:nth-child(4) { animation-delay: 0.15s; }
   &:nth-child(5) { animation-delay: 0.2s; }
   &:nth-child(6) { animation-delay: 0.25s; }
+}
+
+// Auto-stagger for page content sections (via JS)
+.page-content .animate-on-scroll {
+  &[data-stagger="1"] { animation-delay: 0s; }
+  &[data-stagger="2"] { animation-delay: 0.1s; }
+  &[data-stagger="3"] { animation-delay: 0.15s; }
+  &[data-stagger="4"] { animation-delay: 0.2s; }
+  &[data-stagger="5"] { animation-delay: 0.25s; }
+  &[data-stagger="6"] { animation-delay: 0.3s; }
 }
 
 // ---------------------------------------------------------------------------
