@@ -1,17 +1,47 @@
+# =============================================================================
+# SITE SETTINGS
+# =============================================================================
+
 title: "Milosz Czajkowski"
-description: "DevOps consultant specializing in AWS, Kubernetes, and platform engineering"
+tagline: "DevOps Technical Lead & Consultant"
+description: "DevOps consultant specializing in AWS, Kubernetes, and platform engineering. Helping engineering teams build and scale cloud infrastructure."
 url: "https://reforgeit.github.io"
 baseurl: ""
 lang: "en"
 timezone: "Europe/Warsaw"
 
+# =============================================================================
+# AUTHOR / CONTACT
+# =============================================================================
+
 author:
   name: "Milosz Czajkowski"
   email: "milosz.czajkowski.reforgeit@gmail.com"
   linkedin: "milosz-czajkowski"
+  github: "reforgeit"
+  location: "Warsaw, Poland"
+
+# =============================================================================
+# SEO & SOCIAL
+# =============================================================================
+
+# Used by jekyll-seo-tag for Open Graph and Twitter Cards
+twitter:
+  card: "summary"
+social:
+  name: "Milosz Czajkowski"
+  links:
+    - "https://linkedin.com/in/milosz-czajkowski"
+    - "https://github.com/reforgeit"
+
+# Uncomment when OG image is added:
+# og_image: /assets/images/og-image.png
+
+# =============================================================================
+# BUILD SETTINGS
+# =============================================================================
 
 theme: minima
-
 permalink: /blog/:title/
 
 plugins:
@@ -19,13 +49,19 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+# =============================================================================
+# EXCLUDES
+# =============================================================================
+
 exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
   - vendor
+  - node_modules
   - PLAN.md
   - CLAUDE.md
   - AGENTS.md
   - .beads/
-  - Czajkowski_Milosz_CV_2025.pdf
+  - "*.pdf"
+  - .DS_Store
