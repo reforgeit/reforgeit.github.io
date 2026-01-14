@@ -30,9 +30,23 @@
   // Borders
   --border-color: #30363d;
 
-  // Glows
+  // Glows (for hover states and ambient effects)
   --glow-primary: rgba(57, 255, 20, 0.3);
+  --glow-primary-intense: rgba(57, 255, 20, 0.5);
+  --glow-primary-subtle: rgba(57, 255, 20, 0.15);
   --glow-secondary: rgba(0, 255, 255, 0.3);
+  --glow-secondary-intense: rgba(0, 255, 255, 0.5);
+  --glow-hover: rgba(255, 0, 255, 0.3);
+
+  // Gradients
+  --gradient-text: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  --gradient-bg-radial: radial-gradient(ellipse at top, #1a2332 0%, var(--bg-primary) 100%);
+  --gradient-glow-primary: radial-gradient(circle, var(--glow-primary) 0%, transparent 70%);
+  --gradient-glow-secondary: radial-gradient(circle, var(--glow-secondary) 0%, transparent 70%);
+
+  // Borders with glow
+  --border-glow-primary: 1px solid rgba(57, 255, 20, 0.4);
+  --border-glow-secondary: 1px solid rgba(0, 255, 255, 0.4);
 
   // =========================================================================
   // TYPOGRAPHY SCALE (Major Third ratio ~1.25)
@@ -110,14 +124,27 @@
   --ease-in-out: cubic-bezier(0.4, 0, 0.6, 1);
 
   // =========================================================================
-  // SHADOWS (for Phase 2)
+  // SHADOWS - Layered system for depth hierarchy
   // =========================================================================
 
+  // Base elevation shadows
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.15);
   --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.25), 0 4px 8px rgba(0, 0, 0, 0.15);
   --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.2);
+
+  // Glow shadows (for interactive elements)
+  --shadow-glow-sm: 0 0 10px var(--glow-primary-subtle);
   --shadow-glow: 0 0 20px var(--glow-primary);
+  --shadow-glow-lg: 0 0 30px var(--glow-primary-intense);
+  --shadow-glow-secondary: 0 0 20px var(--glow-secondary);
+
+  // Combined shadows for cards
+  --shadow-card: var(--shadow-md);
+  --shadow-card-hover: var(--shadow-lg), 0 0 20px var(--glow-primary-subtle);
+
+  // Inset shadows (for pressed states)
+  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.3);
 
   // Legacy spacing (for compatibility)
   --spacing-sm: var(--space-2);
@@ -475,16 +502,127 @@ a.btn {
 }
 
 // =============================================================================
-// HEADER
+// CARDS - Elevated surfaces with hover states
+// =============================================================================
+
+.card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: var(--space-8);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform 0.25s var(--ease-out),
+    box-shadow 0.25s var(--ease-out),
+    border-color 0.25s ease;
+
+  // Hover state - lift and glow
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba(57, 255, 20, 0.4);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  // For clickable cards
+  &[href], &.card--interactive {
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  // Card title
+  .card-title {
+    color: var(--color-primary);
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+  }
+
+  // Card content
+  .card-content {
+    color: var(--text-primary);
+  }
+
+  // Card meta/footer
+  .card-meta {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    margin-top: var(--space-4);
+  }
+}
+
+// Card variants
+.card--compact {
+  padding: var(--space-5);
+}
+
+.card--feature {
+  padding: var(--space-10);
+  border-radius: 12px;
+}
+
+.card--accent {
+  border-left: 3px solid var(--color-primary);
+}
+
+// Card grid layout
+.card-grid {
+  display: grid;
+  gap: var(--space-6);
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Mobile: reduce hover effects
+@media (max-width: 767px) {
+  .card {
+    padding: var(--space-6);
+
+    &:hover {
+      transform: none; // No lift on mobile
+    }
+
+    &:active {
+      transform: scale(0.98);
+      opacity: 0.95;
+    }
+  }
+}
+
+// =============================================================================
+// HEADER - Glass-morphism effect
 // =============================================================================
 
 .site-header {
-  background-color: var(--bg-surface);
-  border-bottom: 1px solid var(--border-color);
+  // Glass-morphism: semi-transparent with blur
+  background: rgba(22, 27, 34, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); // Safari
+  border-bottom: 1px solid rgba(48, 54, 61, 0.5);
   padding: var(--space-4) 0;
   position: sticky;
   top: 0;
   z-index: 100;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  // Enhanced state when scrolled (via JS)
+  &.scrolled {
+    background: rgba(22, 27, 34, 0.95);
+    box-shadow: var(--shadow-lg);
+  }
 
   .wrapper {
     display: flex;
@@ -497,6 +635,21 @@ a.btn {
       justify-content: space-between;
       align-items: center;
     }
+  }
+}
+
+// Fallback for browsers without backdrop-filter
+@supports not (backdrop-filter: blur(12px)) {
+  .site-header {
+    background: var(--bg-surface);
+  }
+}
+
+// Reduced blur on mobile for performance
+@media (max-width: 767px) {
+  .site-header {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 }
 
@@ -700,11 +853,80 @@ a.btn {
 }
 
 // =============================================================================
+// BACKGROUND TEXTURES - Subtle depth and atmosphere
+// =============================================================================
+
+// Gradient orbs for atmospheric depth
+body {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+      // Primary glow orb (top right)
+      radial-gradient(
+        ellipse 600px 600px at 85% 15%,
+        var(--glow-primary-subtle) 0%,
+        transparent 50%
+      ),
+      // Secondary glow orb (bottom left)
+      radial-gradient(
+        ellipse 400px 400px at 10% 85%,
+        rgba(0, 255, 255, 0.08) 0%,
+        transparent 50%
+      ),
+      // Base gradient
+      var(--gradient-bg-radial);
+  }
+}
+
+// Optional noise texture (very subtle)
+// Can be toggled by adding .noise-bg class to body
+.noise-bg::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.015;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+// Reduce background effects on mobile for performance
+@media (max-width: 767px) {
+  body::before {
+    background:
+      radial-gradient(
+        ellipse 300px 300px at 85% 10%,
+        var(--glow-primary-subtle) 0%,
+        transparent 60%
+      ),
+      var(--bg-primary);
+  }
+}
+
+// Respect reduced motion - no animated backgrounds
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    background: var(--bg-primary);
+  }
+}
+
+// =============================================================================
 // MINIMA OVERRIDES (clear any remaining defaults)
 // =============================================================================
 
-// Override Minima's default colors
-.site-header,
+// Override Minima's default colors (footer only - header uses glass-morphism)
 .site-footer {
   background-color: var(--bg-surface);
 }
