@@ -923,6 +923,247 @@ body {
 }
 
 // =============================================================================
+// PHASE 3: MOTION & INTERACTIONS
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// SCROLL-TRIGGERED ANIMATIONS
+// Elements with .animate-on-scroll start invisible and animate in via JS
+// ---------------------------------------------------------------------------
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Base state: hidden until triggered
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: none; // Prevent flash on load
+}
+
+// Animated state: triggered by Intersection Observer
+.animate-in {
+  animation: fadeUp 0.6s var(--ease-out) forwards;
+}
+
+// Animation variants
+.animate-on-scroll.fade-only {
+  transform: none;
+
+  &.animate-in {
+    animation-name: fadeIn;
+  }
+}
+
+.animate-on-scroll.scale-in {
+  transform: scale(0.95);
+
+  &.animate-in {
+    animation-name: scaleIn;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// STAGGERED ANIMATIONS
+// Add .stagger-children to parent, children animate with delays
+// ---------------------------------------------------------------------------
+
+.stagger-children > .animate-on-scroll {
+  &:nth-child(1) { animation-delay: 0s; }
+  &:nth-child(2) { animation-delay: 0.08s; }
+  &:nth-child(3) { animation-delay: 0.16s; }
+  &:nth-child(4) { animation-delay: 0.24s; }
+  &:nth-child(5) { animation-delay: 0.32s; }
+  &:nth-child(6) { animation-delay: 0.40s; }
+  &:nth-child(7) { animation-delay: 0.48s; }
+  &:nth-child(8) { animation-delay: 0.56s; }
+}
+
+// Faster stagger variant
+.stagger-fast > .animate-on-scroll {
+  &:nth-child(1) { animation-delay: 0s; }
+  &:nth-child(2) { animation-delay: 0.05s; }
+  &:nth-child(3) { animation-delay: 0.1s; }
+  &:nth-child(4) { animation-delay: 0.15s; }
+  &:nth-child(5) { animation-delay: 0.2s; }
+  &:nth-child(6) { animation-delay: 0.25s; }
+}
+
+// ---------------------------------------------------------------------------
+// BUTTON MICROINTERACTIONS
+// Hover lift, active press, focus glow
+// ---------------------------------------------------------------------------
+
+.btn,
+a.btn {
+  // Lift on hover
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow-sm);
+  }
+
+  // Press on active (click)
+  &:active {
+    transform: translateY(1px);
+    box-shadow: var(--shadow-inset);
+    transition-duration: 0.05s;
+  }
+
+  // Glow on focus (keyboard navigation)
+  &:focus-visible {
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+// Secondary button variant microinteractions
+.btn-secondary {
+  &:hover {
+    box-shadow: var(--shadow-glow-secondary);
+  }
+
+  &:focus-visible {
+    box-shadow: var(--shadow-glow-secondary);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// NAVIGATION UNDERLINE ANIMATION
+// Underline grows from center on hover
+// ---------------------------------------------------------------------------
+
+.nav-link,
+.page-link {
+  position: relative;
+  text-decoration: none;
+
+  // Animated underline
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--color-hover);
+    transform: translateX(-50%);
+    transition: width 0.25s var(--ease-out);
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: none; // Override default
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// INTERACTIVE ELEMENT HOVER EFFECTS
+// Subtle lift for links, cards already have lift in Phase 2
+// ---------------------------------------------------------------------------
+
+// Link hover glow (subtle)
+a:not(.btn):not(.nav-link):not(.page-link):not(.site-title):not(.card) {
+  transition:
+    color var(--transition-fast),
+    text-shadow var(--transition-fast);
+
+  &:hover {
+    text-shadow: 0 0 8px currentColor;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// REDUCED MOTION SUPPORT
+// Respect user preferences, show content without animation
+// ---------------------------------------------------------------------------
+
+@media (prefers-reduced-motion: reduce) {
+  // Disable all animations
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  // Show scroll-triggered elements immediately
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
+
+  // Remove hover transforms
+  .btn:hover,
+  .btn:active,
+  .card:hover {
+    transform: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// MOBILE MOTION ADJUSTMENTS
+// Reduce motion complexity on mobile for performance
+// ---------------------------------------------------------------------------
+
+@media (max-width: 767px) {
+  // Faster, simpler animations
+  .animate-in {
+    animation-duration: 0.4s;
+  }
+
+  // No hover effects on mobile (touch devices)
+  .btn:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  // Touch feedback instead
+  .btn:active {
+    transform: scale(0.97);
+    opacity: 0.9;
+  }
+
+  // Disable nav underline animation on mobile
+  .nav-link::after,
+  .page-link::after {
+    display: none;
+  }
+}
+
+// =============================================================================
 // MINIMA OVERRIDES (clear any remaining defaults)
 // =============================================================================
 
