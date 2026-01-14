@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Fonts: Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  {% seo %}
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% feed_meta %}
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  {% include header.html %}
+
+  <!-- Hero Section - Full viewport immersive experience -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <!-- Decorative corner brackets -->
+    <div class="hero-bracket hero-bracket--tl" aria-hidden="true"></div>
+    <div class="hero-bracket hero-bracket--tr" aria-hidden="true"></div>
+    <div class="hero-bracket hero-bracket--bl" aria-hidden="true"></div>
+    <div class="hero-bracket hero-bracket--br" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <!-- Terminal-style window chrome -->
+      <div class="terminal-window animate-on-scroll">
+        <div class="terminal-header" aria-hidden="true">
+          <span class="terminal-dot terminal-dot--red"></span>
+          <span class="terminal-dot terminal-dot--yellow"></span>
+          <span class="terminal-dot terminal-dot--green"></span>
+          <span class="terminal-title">milosz@reforgeit ~ %</span>
+        </div>
+        <div class="terminal-body">
+          <!-- Main headline with gradient and typing effect -->
+          <h1 id="hero-heading" class="hero-title">
+            <span class="hero-title-prefix" aria-hidden="true">&gt; </span>
+            <span class="gradient-text typed-text" data-text="{{ page.hero_title | default: 'DevOps Technical Lead & Consultant' }}">{{ page.hero_title | default: 'DevOps Technical Lead & Consultant' }}</span>
+            <span class="typed-cursor" aria-hidden="true">_</span>
+          </h1>
+
+          <!-- Tagline -->
+          <p class="hero-tagline animate-on-scroll">
+            {{ page.hero_tagline | default: 'I help engineering teams build and scale cloud infrastructure with modern DevOps practices.' }}
+          </p>
+
+          <!-- CTA buttons -->
+          <div class="hero-cta animate-on-scroll">
+            <a href="/services/" class="btn">View Services</a>
+            <a href="/contact/" class="btn btn-secondary">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator animate-on-scroll fade-only" aria-hidden="true">
+      <span class="scroll-indicator-text">Scroll</span>
+      <span class="scroll-indicator-arrow"></span>
+    </div>
+  </section>
+
+  <main id="main-content" class="page-content" aria-label="Content">
+    <div class="wrapper">
+      {{ content }}
+    </div>
+  </main>
+  {% include footer.html %}
+  <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+</body>
+</html>

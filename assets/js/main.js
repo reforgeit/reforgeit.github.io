@@ -40,12 +40,72 @@
   }
 
   // ==========================================================================
+  // HERO TYPING ANIMATION (Phase 4)
+  // Character-by-character typing effect for hero headline
+  // ==========================================================================
+
+  const typedTextEl = document.querySelector('.typed-text');
+
+  if (typedTextEl && motionAllowed()) {
+    const text = typedTextEl.textContent;
+    const cursor = document.querySelector('.typed-cursor');
+
+    // Check if we've already shown the animation this session
+    const hasAnimated = sessionStorage.getItem('heroAnimated');
+
+    if (!hasAnimated) {
+      // Hide text initially
+      typedTextEl.textContent = '';
+      typedTextEl.style.visibility = 'visible';
+
+      let charIndex = 0;
+      const typingSpeed = 50; // ms per character
+
+      function typeChar() {
+        if (charIndex < text.length) {
+          typedTextEl.textContent += text.charAt(charIndex);
+          charIndex++;
+          setTimeout(typeChar, typingSpeed);
+        } else {
+          // Animation complete, mark as done for this session
+          sessionStorage.setItem('heroAnimated', 'true');
+        }
+      }
+
+      // Start typing after a brief delay for page load
+      setTimeout(typeChar, 300);
+    }
+  }
+
+  // ==========================================================================
+  // HERO STAGGERED ENTRANCE (Phase 4)
+  // Animate hero elements in sequence
+  // ==========================================================================
+
+  if (motionAllowed()) {
+    const heroElements = document.querySelectorAll('.hero .animate-on-scroll');
+    const staggerDelay = 200; // ms between each element
+
+    heroElements.forEach((el, index) => {
+      setTimeout(() => {
+        el.classList.add('animate-in');
+      }, index * staggerDelay);
+    });
+  } else {
+    // Show immediately if motion is reduced
+    document.querySelectorAll('.hero .animate-on-scroll').forEach(el => {
+      el.classList.add('animate-in');
+    });
+  }
+
+  // ==========================================================================
   // INTERSECTION OBSERVER - Scroll-triggered animations (Phase 3)
-  // Prepared for future use, currently just marks elements as visible
+  // Animates elements as they enter the viewport
   // ==========================================================================
 
   if ('IntersectionObserver' in window && motionAllowed()) {
-    const animateOnScroll = document.querySelectorAll('.animate-on-scroll');
+    // Exclude hero elements (already handled above)
+    const animateOnScroll = document.querySelectorAll('.animate-on-scroll:not(.hero .animate-on-scroll)');
 
     if (animateOnScroll.length > 0) {
       const observer = new IntersectionObserver((entries) => {
@@ -62,8 +122,8 @@
 
       animateOnScroll.forEach(el => observer.observe(el));
     }
-  } else {
-    // If no IntersectionObserver or reduced motion, show all immediately
+  } else if (!motionAllowed()) {
+    // If reduced motion, show all immediately
     document.querySelectorAll('.animate-on-scroll').forEach(el => {
       el.classList.add('animate-in');
     });

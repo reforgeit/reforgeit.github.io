@@ -923,6 +923,389 @@ body {
 }
 
 // =============================================================================
+// PHASE 4: HERO & WOW FACTOR
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// HERO SECTION - Full viewport immersive experience
+// ---------------------------------------------------------------------------
+
+.hero {
+  min-height: calc(100vh - 72px); // Full viewport minus header
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: var(--space-8) var(--space-4);
+  overflow: hidden;
+
+  @media (min-width: 768px) {
+    padding: var(--space-12) var(--space-8);
+  }
+}
+
+.hero-content {
+  max-width: 720px;
+  width: 100%;
+  z-index: 1;
+}
+
+// ---------------------------------------------------------------------------
+// TERMINAL WINDOW CHROME - Decorative container
+// ---------------------------------------------------------------------------
+
+.terminal-window {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+
+  &--red { background: #ff5f56; }
+  &--yellow { background: #ffbd2e; }
+  &--green { background: #27c93f; }
+}
+
+.terminal-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  margin-left: var(--space-3);
+}
+
+.terminal-body {
+  padding: var(--space-8);
+
+  @media (min-width: 768px) {
+    padding: var(--space-12);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// HERO TITLE - Gradient text with typing effect
+// ---------------------------------------------------------------------------
+
+.hero-title {
+  font-size: var(--font-size-2xl);
+  line-height: var(--leading-tight);
+  margin: 0 0 var(--space-6);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 var(--space-2);
+
+  @media (min-width: 768px) {
+    font-size: var(--font-size-4xl);
+  }
+
+  @media (min-width: 1024px) {
+    font-size: var(--font-size-5xl);
+  }
+}
+
+.hero-title-prefix {
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+}
+
+// Gradient text effect
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 50%,
+    var(--color-primary) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+// Typing cursor animation
+.typed-cursor {
+  color: var(--color-primary);
+  animation: blink 1s step-end infinite;
+  font-weight: 400;
+}
+
+// Typing animation (CSS-based)
+.typed-text {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: none; // Cursor is separate element
+}
+
+// When typing animation runs
+.typed-text.typing {
+  animation: typing 2s steps(40, end) forwards;
+  width: 0;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+// ---------------------------------------------------------------------------
+// HERO TAGLINE & CTA
+// ---------------------------------------------------------------------------
+
+.hero-tagline {
+  font-size: var(--font-size-md);
+  color: var(--text-primary);
+  line-height: var(--leading-relaxed);
+  margin: 0 0 var(--space-8);
+  max-width: 55ch;
+
+  @media (min-width: 768px) {
+    font-size: var(--font-size-lg);
+  }
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+// ---------------------------------------------------------------------------
+// DECORATIVE CORNER BRACKETS
+// ---------------------------------------------------------------------------
+
+.hero-bracket {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  opacity: 0.3;
+
+  @media (min-width: 768px) {
+    width: 60px;
+    height: 60px;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background: var(--color-primary);
+  }
+
+  // Top-left bracket
+  &--tl {
+    top: var(--space-8);
+    left: var(--space-4);
+
+    @media (min-width: 768px) {
+      top: var(--space-12);
+      left: var(--space-8);
+    }
+
+    &::before {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+    }
+    &::after {
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 100%;
+    }
+  }
+
+  // Top-right bracket
+  &--tr {
+    top: var(--space-8);
+    right: var(--space-4);
+
+    @media (min-width: 768px) {
+      top: var(--space-12);
+      right: var(--space-8);
+    }
+
+    &::before {
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 2px;
+    }
+    &::after {
+      top: 0;
+      right: 0;
+      width: 2px;
+      height: 100%;
+    }
+  }
+
+  // Bottom-left bracket
+  &--bl {
+    bottom: var(--space-16);
+    left: var(--space-4);
+
+    @media (min-width: 768px) {
+      bottom: var(--space-20);
+      left: var(--space-8);
+    }
+
+    &::before {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+    }
+    &::after {
+      bottom: 0;
+      left: 0;
+      width: 2px;
+      height: 100%;
+    }
+  }
+
+  // Bottom-right bracket
+  &--br {
+    bottom: var(--space-16);
+    right: var(--space-4);
+
+    @media (min-width: 768px) {
+      bottom: var(--space-20);
+      right: var(--space-8);
+    }
+
+    &::before {
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 2px;
+    }
+    &::after {
+      bottom: 0;
+      right: 0;
+      width: 2px;
+      height: 100%;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// SCROLL INDICATOR
+// ---------------------------------------------------------------------------
+
+.scroll-indicator {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-muted);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+
+  @media (max-width: 767px) {
+    display: none; // Hide on mobile - obvious to scroll
+  }
+}
+
+.scroll-indicator-arrow {
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid var(--text-muted);
+  border-bottom: 2px solid var(--text-muted);
+  transform: rotate(45deg);
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: rotate(45deg) translateY(0);
+  }
+  40% {
+    transform: rotate(45deg) translateY(6px);
+  }
+  60% {
+    transform: rotate(45deg) translateY(3px);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// HERO MOBILE ADJUSTMENTS
+// ---------------------------------------------------------------------------
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: calc(100vh - 120px); // Account for mobile header
+    padding-top: var(--space-6);
+  }
+
+  .terminal-body {
+    padding: var(--space-6);
+  }
+
+  .hero-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .hero-tagline {
+    font-size: var(--font-size-base);
+  }
+
+  // Simpler brackets on mobile
+  .hero-bracket {
+    width: 24px;
+    height: 24px;
+    opacity: 0.2;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// REDUCED MOTION - Disable shimmer and bounce
+// ---------------------------------------------------------------------------
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text {
+    animation: none;
+    background-size: 100% auto;
+  }
+
+  .scroll-indicator-arrow {
+    animation: none;
+  }
+
+  .typed-text.typing {
+    animation: none;
+    width: auto;
+  }
+}
+
+// =============================================================================
 // PHASE 3: MOTION & INTERACTIONS
 // =============================================================================
 

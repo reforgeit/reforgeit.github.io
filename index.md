@@ -1,11 +1,9 @@
 ---
-layout: default
+layout: home
 title: "Milosz Czajkowski | DevOps Consultant"
+hero_title: "DevOps Technical Lead & Consultant"
+hero_tagline: "I help engineering teams build and scale cloud infrastructure with modern DevOps practices."
 ---
-
-# DevOps Technical Lead & Consultant
-
-I help engineering teams build and scale cloud infrastructure with modern DevOps practices.
 
 ## What I Do
 
