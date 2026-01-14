@@ -1222,12 +1222,12 @@ body {
   font-size: var(--font-size-xs);
   text-transform: uppercase;
   letter-spacing: var(--tracking-widest);
-  opacity: 1;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 
-  // Hide when scrolled (via JS)
+  // Hide when scrolled (via JS) - !important needed to override animation
   &.hidden {
-    opacity: 0;
+    opacity: 0 !important;
+    visibility: hidden;
     pointer-events: none;
   }
 
