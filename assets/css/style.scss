@@ -931,17 +931,18 @@ body {
 // ---------------------------------------------------------------------------
 
 .hero {
-  min-height: calc(100vh - 72px); // Full viewport minus header
+  min-height: 70vh; // Shorter hero so content peeks above fold
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: var(--space-8) var(--space-4);
+  padding: var(--space-6) var(--space-4);
   overflow: hidden;
 
   @media (min-width: 768px) {
-    padding: var(--space-12) var(--space-8);
+    min-height: 75vh;
+    padding: var(--space-8) var(--space-8);
   }
 }
 
@@ -1402,8 +1403,8 @@ body {
 
 @media (max-width: 767px) {
   .hero {
-    min-height: calc(100vh - 120px); // Account for mobile header
-    padding-top: var(--space-6);
+    min-height: 65vh; // Shorter on mobile so content visible sooner
+    padding-top: var(--space-4);
   }
 
   .terminal-body {
