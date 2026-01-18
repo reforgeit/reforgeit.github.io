@@ -27,15 +27,12 @@ author:
 
 # Used by jekyll-seo-tag for Open Graph and Twitter Cards
 twitter:
-  card: "summary"
+  card: "summary_large_image"
 social:
   name: "Milosz Czajkowski"
   links:
     - "https://linkedin.com/in/milosz-czajkowski"
     - "https://github.com/reforgeit"
-
-# Uncomment when OG image is added:
-# og_image: /assets/images/og-image.png
 
 # =============================================================================
 # BUILD SETTINGS
@@ -65,3 +62,13 @@ exclude:
   - .beads/
   - "*.pdf"
   - .DS_Store
+
+# =============================================================================
+# PAGE DEFAULTS
+# =============================================================================
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/og-image.png
