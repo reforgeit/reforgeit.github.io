@@ -63,6 +63,7 @@
   const hamburger = document.querySelector('.hamburger');
   const mobileNav = document.querySelector('.mobile-nav');
   const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+  const mobileNavClose = document.querySelector('.mobile-nav-close');
 
   if (hamburger && mobileNav) {
     function openNav() {
@@ -97,6 +98,14 @@
     mobileNavLinks.forEach(link => {
       link.addEventListener('click', closeNav);
     });
+
+    // Close button handler
+    if (mobileNavClose) {
+      mobileNavClose.addEventListener('click', () => {
+        closeNav();
+        hamburger.focus();
+      });
+    }
 
     // Close on escape key
     document.addEventListener('keydown', (e) => {

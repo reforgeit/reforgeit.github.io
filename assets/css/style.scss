@@ -1791,7 +1791,7 @@ a, button, .card, .btn {
   right: 0;
   bottom: 0;
   background: var(--bg-primary);
-  z-index: 150;
+  z-index: 9000; // Above everything except skip-link
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1808,6 +1808,27 @@ a, button, .card, .btn {
 .mobile-nav[aria-hidden="false"] {
   opacity: 1;
   visibility: visible;
+}
+
+.mobile-nav-close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: 2.5rem;
+  line-height: 1;
+  padding: var(--space-2);
+  min-width: 48px;
+  min-height: 48px;
+  cursor: pointer;
+  z-index: 10;
+
+  &:hover,
+  &:focus {
+    color: var(--color-text);
+  }
 }
 
 .mobile-nav-content {

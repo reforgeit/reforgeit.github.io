@@ -23,6 +23,9 @@
 
   <!-- Mobile navigation overlay -->
   <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+    <button class="mobile-nav-close" aria-label="Close menu">
+      <span aria-hidden="true">&times;</span>
+    </button>
     <div class="mobile-nav-content">
       {% for item in site.data.navigation.main %}
         <a class="mobile-nav-link" href="{{ item.url | relative_url }}">
