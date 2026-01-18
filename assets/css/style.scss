@@ -1168,8 +1168,60 @@ body {
 
 .hero-cta {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: var(--space-4);
+
+  .btn {
+    white-space: nowrap;
+  }
+
+  @media (max-width: 400px) {
+    gap: var(--space-2);
+
+    .btn {
+      padding-left: var(--space-3);
+      padding-right: var(--space-3);
+      font-size: var(--font-size-2xs);
+    }
+  }
+}
+
+.hero-skills {
+  margin-top: var(--space-8);
+  text-align: left;
+}
+
+.hero-skills-label {
+  font-family: var(--font-mono);
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-2);
+}
+
+.hero-skills-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+
+  li {
+    margin-bottom: var(--space-1);
+
+    &::before {
+      content: '—';
+      color: var(--color-border);
+      margin-right: var(--space-2);
+    }
+
+    strong {
+      color: var(--color-text);
+    }
+  }
+
+  @media (max-width: 767px) {
+    font-size: var(--font-size-xs);
+  }
 }
 
 // ---------------------------------------------------------------------------
