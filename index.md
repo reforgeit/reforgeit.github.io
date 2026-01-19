@@ -15,4 +15,4 @@ hero_tagline: "I help engineering teams build and scale cloud infrastructure wit
 
 Currently DevOps Technical Lead at Keyloop, where I build internal developer platforms that help teams ship faster. With experience spanning cloud architecture, container orchestration, and platform engineering, I focus on practical solutions that scale.
 
-<a href="/about/" class="btn btn-secondary">Learn More</a>
+<a href="/about/" class="btn btn-secondary">About Me</a>

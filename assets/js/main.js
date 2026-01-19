@@ -65,11 +65,19 @@
   const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
   const mobileNavClose = document.querySelector('.mobile-nav-close');
 
+  // Get all focusable elements in mobile nav
+  const mobileNavFocusable = mobileNav ? mobileNav.querySelectorAll('a, button') : [];
+
   if (hamburger && mobileNav) {
+    // Set initial tabindex to -1 (nav starts hidden)
+    mobileNavFocusable.forEach(el => el.setAttribute('tabindex', '-1'));
+
     function openNav() {
       hamburger.setAttribute('aria-expanded', 'true');
       mobileNav.setAttribute('aria-hidden', 'false');
       document.body.classList.add('nav-open');
+      // Make focusable elements tabbable
+      mobileNavFocusable.forEach(el => el.removeAttribute('tabindex'));
       // Focus first nav link for accessibility
       if (mobileNavLinks.length > 0) {
         mobileNavLinks[0].focus();
@@ -80,6 +88,8 @@
       hamburger.setAttribute('aria-expanded', 'false');
       mobileNav.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('nav-open');
+      // Remove from tab order when hidden
+      mobileNavFocusable.forEach(el => el.setAttribute('tabindex', '-1'));
     }
 
     function toggleNav() {
