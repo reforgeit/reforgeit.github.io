@@ -626,15 +626,10 @@ a.btn {
 
   .wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     gap: var(--space-4);
-
-    @media (min-width: 768px) {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
   }
 }
 
@@ -1781,7 +1776,7 @@ a, button, .card, .btn {
 }
 
 // ---------------------------------------------------------------------------
-// MOBILE NAVIGATION - Full-screen overlay
+// MOBILE NAVIGATION - Left-side drawer
 // ---------------------------------------------------------------------------
 
 .mobile-nav {
@@ -1790,70 +1785,107 @@ a, button, .card, .btn {
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--bg-primary);
-  z-index: 9000; // Above everything except skip-link
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
+  z-index: 9000;
   visibility: hidden;
-  transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease;
 
-  // Safe area for notched devices
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  // Backdrop
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 }
 
 .mobile-nav[aria-hidden="false"] {
-  opacity: 1;
   visibility: visible;
+
+  &::before {
+    opacity: 1;
+  }
+
+  .mobile-nav-drawer {
+    transform: translateX(0);
+  }
+}
+
+.mobile-nav-drawer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 280px;
+  max-width: 85vw;
+  background: var(--bg-primary);
+  border-right: 1px solid var(--color-border);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+.mobile-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mobile-nav-title {
+  font-family: var(--font-mono);
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
 }
 
 .mobile-nav-close {
-  position: absolute;
-  top: var(--space-4);
-  right: var(--space-4);
   background: none;
   border: none;
-  color: var(--color-primary);
-  font-size: 2.5rem;
+  color: var(--color-text-muted);
+  font-size: 1.75rem;
   line-height: 1;
   padding: var(--space-2);
-  min-width: 48px;
-  min-height: 48px;
+  min-width: 44px;
+  min-height: 44px;
   cursor: pointer;
-  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover,
   &:focus {
-    color: var(--color-text);
+    color: var(--color-primary);
   }
 }
 
 .mobile-nav-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-6);
+  padding: var(--space-4) 0;
+  flex: 1;
 }
 
 .mobile-nav-link {
   font-family: var(--font-heading);
-  font-size: var(--font-size-2xl);
-  color: var(--text-primary);
+  font-size: var(--font-size-lg);
+  color: var(--color-text);
   text-decoration: none;
-  padding: var(--space-4) var(--space-8);
-  min-height: 56px;
+  padding: var(--space-3) var(--space-4);
+  min-height: 48px;
   display: flex;
   align-items: center;
-  transition:
-    color 0.2s ease,
-    transform 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 
   &:hover,
   &:focus {
     color: var(--color-primary);
+    background: var(--bg-surface);
     text-decoration: none;
   }
 
@@ -1869,23 +1901,24 @@ a, button, .card, .btn {
 
 // Staggered entrance for mobile nav links
 .mobile-nav[aria-hidden="false"] .mobile-nav-link {
-  animation: mobileNavSlide 0.3s ease forwards;
+  animation: mobileNavLinkSlide 0.25s ease forwards;
+  opacity: 0;
 
-  &:nth-child(1) { animation-delay: 0.05s; }
-  &:nth-child(2) { animation-delay: 0.1s; }
-  &:nth-child(3) { animation-delay: 0.15s; }
-  &:nth-child(4) { animation-delay: 0.2s; }
-  &:nth-child(5) { animation-delay: 0.25s; }
+  &:nth-child(1) { animation-delay: 0.1s; }
+  &:nth-child(2) { animation-delay: 0.15s; }
+  &:nth-child(3) { animation-delay: 0.2s; }
+  &:nth-child(4) { animation-delay: 0.25s; }
+  &:nth-child(5) { animation-delay: 0.3s; }
 }
 
-@keyframes mobileNavSlide {
+@keyframes mobileNavLinkSlide {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateX(-12px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 

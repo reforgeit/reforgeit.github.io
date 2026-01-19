@@ -1,5 +1,12 @@
 <header class="site-header">
   <div class="wrapper">
+    <!-- Mobile hamburger button (left side) -->
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="hamburger-line" aria-hidden="true"></span>
+      <span class="hamburger-line" aria-hidden="true"></span>
+      <span class="hamburger-line" aria-hidden="true"></span>
+    </button>
+
     <a class="site-title" href="{{ '/' | relative_url }}">
       <span class="prompt">&gt;</span> {{ site.title | escape }}<span class="cursor">_</span>
     </a>
@@ -12,26 +19,24 @@
         </a>
       {% endfor %}
     </nav>
-
-    <!-- Mobile hamburger button -->
-    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
-      <span class="hamburger-line" aria-hidden="true"></span>
-      <span class="hamburger-line" aria-hidden="true"></span>
-      <span class="hamburger-line" aria-hidden="true"></span>
-    </button>
   </div>
 
-  <!-- Mobile navigation overlay -->
+  <!-- Mobile navigation drawer (slides from left) -->
   <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
-    <button class="mobile-nav-close" aria-label="Close menu">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <div class="mobile-nav-content">
-      {% for item in site.data.navigation.main %}
-        <a class="mobile-nav-link" href="{{ item.url | relative_url }}">
-          <span class="mobile-nav-prefix">&gt;</span> {{ item.title }}
-        </a>
-      {% endfor %}
+    <div class="mobile-nav-drawer">
+      <div class="mobile-nav-header">
+        <span class="mobile-nav-title">> menu_</span>
+        <button class="mobile-nav-close" aria-label="Close menu">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="mobile-nav-content">
+        {% for item in site.data.navigation.main %}
+          <a class="mobile-nav-link" href="{{ item.url | relative_url }}">
+            <span class="mobile-nav-prefix">&gt;</span> {{ item.title }}
+          </a>
+        {% endfor %}
+      </div>
     </div>
   </nav>
 </header>
