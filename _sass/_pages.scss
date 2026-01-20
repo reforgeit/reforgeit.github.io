@@ -1,0 +1,97 @@
+// =============================================================================
+// PAGE STYLES
+// =============================================================================
+
+.page-header,
+.post-header {
+  margin-bottom: var(--space-10);
+
+  h1 {
+    margin-top: 0;
+  }
+}
+
+.page-title,
+.post-title {
+  margin-top: 0;
+}
+
+// =============================================================================
+// SERVICE SECTIONS (left border accent)
+// =============================================================================
+
+.page-content h2 {
+  border-left: 3px solid var(--color-primary);
+  padding-left: var(--space-4);
+  margin-left: calc(-1 * var(--space-4) - 3px);
+}
+
+// =============================================================================
+// BADGES
+// =============================================================================
+
+.badge {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  font-family: var(--font-heading);
+  color: var(--color-warning);
+  border: 1px solid var(--color-warning);
+  padding: var(--space-1) var(--space-2);
+  border-radius: 3px;
+  letter-spacing: var(--tracking-wide);
+}
+
+// =============================================================================
+// POST META
+// =============================================================================
+
+.post-meta {
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-8);
+}
+
+.post-footer {
+  margin-top: var(--space-16);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--border-color);
+}
+
+// =============================================================================
+// BLOG LIST
+// =============================================================================
+
+.post-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding-left: 0;
+    margin-bottom: var(--space-8);
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .post-date {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    display: block;
+    margin-bottom: var(--space-2);
+  }
+}
+
+// =============================================================================
+// ERROR PAGE
+// =============================================================================
+
+.error-page {
+  text-align: center;
+  padding: var(--space-16) 0;
+
+  h1 {
+    font-size: var(--font-size-5xl);
+  }
+}
+

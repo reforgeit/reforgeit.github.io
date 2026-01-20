@@ -1,0 +1,230 @@
+// =============================================================================
+// LINKS
+// =============================================================================
+
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast), text-decoration var(--transition-fast);
+
+  &:hover,
+  &:focus {
+    color: var(--color-hover);
+    text-decoration: underline;
+  }
+
+  &:visited {
+    color: var(--color-secondary);
+  }
+}
+
+// =============================================================================
+// LISTS
+// =============================================================================
+
+ul, ol {
+  padding-left: var(--space-6);
+  margin: var(--space-6) 0;
+}
+
+ul {
+  list-style: none;
+
+  li {
+    position: relative;
+    padding-left: var(--space-6);
+    margin-bottom: var(--space-3);
+
+    &::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      color: var(--color-primary);
+      font-family: var(--font-heading);
+    }
+  }
+}
+
+ol {
+  li {
+    margin-bottom: var(--space-3);
+    padding-left: var(--space-2);
+
+    &::marker {
+      color: var(--color-primary);
+      font-family: var(--font-heading);
+    }
+  }
+}
+
+// =============================================================================
+// BUTTONS & CTAs
+// =============================================================================
+
+.btn,
+a.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  padding: var(--space-4) var(--space-6);
+  min-height: 48px; // Touch-friendly
+  border: 2px solid var(--color-primary);
+  background: transparent;
+  color: var(--color-primary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast) var(--ease-out);
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-primary);
+    color: var(--bg-primary);
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: var(--color-primary);
+  }
+
+  &:hover:visited {
+    color: var(--bg-primary);
+  }
+}
+
+.btn-secondary {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-secondary);
+    color: var(--bg-primary);
+  }
+
+  &:visited {
+    color: var(--color-secondary);
+  }
+
+  &:hover:visited {
+    color: var(--bg-primary);
+  }
+}
+
+// Button group with proper spacing
+.btn + .btn {
+  margin-left: var(--space-4);
+}
+
+@media (max-width: 767px) {
+  .btn,
+  a.btn {
+    padding: var(--space-4) var(--space-5);
+    font-size: var(--font-size-xs);
+    min-height: 52px; // Larger on mobile
+  }
+}
+
+// =============================================================================
+// CARDS - Elevated surfaces with hover states
+// =============================================================================
+
+.card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: var(--space-8);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform 0.25s var(--ease-out),
+    box-shadow 0.25s var(--ease-out),
+    border-color 0.25s ease;
+
+  // Hover state - lift and glow
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba(57, 255, 20, 0.4);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  // For clickable cards
+  &[href], &.card--interactive {
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  // Card title
+  .card-title {
+    color: var(--color-primary);
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+  }
+
+  // Card content
+  .card-content {
+    color: var(--text-primary);
+  }
+
+  // Card meta/footer
+  .card-meta {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    margin-top: var(--space-4);
+  }
+}
+
+// Card variants
+.card--compact {
+  padding: var(--space-5);
+}
+
+.card--feature {
+  padding: var(--space-10);
+  border-radius: 12px;
+}
+
+.card--accent {
+  border-left: 3px solid var(--color-primary);
+}
+
+// Card grid layout
+.card-grid {
+  display: grid;
+  gap: var(--space-6);
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Mobile: reduce hover effects
+@media (max-width: 767px) {
+  .card {
+    padding: var(--space-6);
+
+    &:hover {
+      transform: none; // No lift on mobile
+    }
+
+    &:active {
+      transform: scale(0.98);
+      opacity: 0.95;
+    }
+  }
+}
+

@@ -1,0 +1,39 @@
+// =============================================================================
+// MINIMA OVERRIDES (clear any remaining defaults)
+// =============================================================================
+
+// Override Minima's default colors (footer only - header uses glass-morphism)
+.site-footer {
+  background-color: var(--bg-surface);
+}
+
+// Ensure no white backgrounds leak through
+* {
+  box-sizing: border-box;
+}
+
+// Code blocks
+code, pre {
+  font-family: var(--font-body);
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+code {
+  padding: var(--space-1) var(--space-2);
+  font-size: 0.9em;
+}
+
+pre {
+  padding: var(--space-4);
+  overflow-x: auto;
+  margin: var(--space-6) 0;
+
+  code {
+    border: none;
+    padding: 0;
+    font-size: var(--font-size-sm);
+  }
+}

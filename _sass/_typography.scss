@@ -1,0 +1,137 @@
+// =============================================================================
+// TYPOGRAPHY - Refined Scale with Optical Adjustments
+// =============================================================================
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  // Generous top margin creates clear section breaks
+  margin-top: var(--space-16);
+  margin-bottom: var(--space-6);
+}
+
+// First heading in a section - no top margin needed
+.page-content > .wrapper > h1:first-child,
+.page-body > h1:first-child,
+section > h1:first-child,
+section > h2:first-child,
+article > h1:first-child {
+  margin-top: 0;
+}
+
+h1 {
+  color: var(--color-primary);
+  font-size: var(--font-size-3xl);
+  letter-spacing: var(--tracking-tight);
+  text-shadow:
+    0 0 10px rgba(57, 255, 20, 0.5),
+    0 0 20px rgba(57, 255, 20, 0.3),
+    0 0 40px rgba(57, 255, 20, 0.1);
+}
+
+h2 {
+  color: var(--color-secondary);
+  font-size: var(--font-size-2xl);
+  letter-spacing: var(--tracking-tight);
+  margin-top: var(--space-12);
+}
+
+h3 {
+  color: var(--text-primary);
+  font-size: var(--font-size-xl);
+  letter-spacing: var(--tracking-normal);
+  margin-top: var(--space-10);
+}
+
+h4 {
+  color: var(--text-primary);
+  font-size: var(--font-size-lg);
+  margin-top: var(--space-8);
+}
+
+h5, h6 {
+  color: var(--text-muted);
+  font-size: var(--font-size-base);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  margin-top: var(--space-6);
+}
+
+p {
+  margin-bottom: var(--paragraph-gap);
+  max-width: 70ch; // Optimal line length for readability
+}
+
+// Lead paragraph - larger, more prominent
+.lead, p.lead {
+  font-size: var(--font-size-md);
+  line-height: var(--leading-loose);
+  color: var(--text-primary);
+}
+
+strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+small, .text-small {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: var(--space-12) 0;
+}
+
+// =============================================================================
+// MOBILE TYPOGRAPHY - Optimized for touch devices
+// =============================================================================
+
+@media (max-width: 767px) {
+  body {
+    font-size: 1.0625rem; // 17px - better for mobile reading distance
+    line-height: var(--leading-loose);
+  }
+
+  h1 {
+    font-size: var(--font-size-2xl); // 28px on mobile
+    letter-spacing: var(--tracking-normal);
+  }
+
+  h2 {
+    font-size: var(--font-size-xl); // 24px on mobile
+  }
+
+  h3 {
+    font-size: var(--font-size-lg); // 20px on mobile
+  }
+
+  h4 {
+    font-size: var(--font-size-base);
+  }
+
+  // Tighter margins on mobile to save space
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-4);
+  }
+
+  h2 {
+    margin-top: var(--space-8);
+  }
+}
+
+// Extra small screens (iPhone SE)
+@media (max-width: 375px) {
+  h1 {
+    font-size: var(--font-size-xl);
+  }
+
+  h2 {
+    font-size: var(--font-size-lg);
+  }
+}
+

@@ -1,0 +1,120 @@
+// =============================================================================
+// HEADER - Glass-morphism effect
+// =============================================================================
+
+.site-header {
+  // Glass-morphism: semi-transparent with blur
+  background: rgba(22, 27, 34, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); // Safari
+  border-bottom: 1px solid rgba(48, 54, 61, 0.5);
+  padding: var(--space-4) 0;
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  // Enhanced state when scrolled (via JS)
+  &.scrolled {
+    background: rgba(22, 27, 34, 0.95);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+}
+
+// Fallback for browsers without backdrop-filter
+@supports not (backdrop-filter: blur(12px)) {
+  .site-header {
+    background: var(--bg-surface);
+  }
+}
+
+// Reduced blur on mobile for performance
+@media (max-width: 767px) {
+  .site-header {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+.site-title {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  font-size: var(--font-size-lg);
+  letter-spacing: var(--tracking-wide);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+    color: var(--color-primary);
+  }
+
+  .prompt {
+    opacity: 0.7;
+  }
+
+  .cursor {
+    animation: blink 1s step-end infinite;
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  50.01%, 100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-title .cursor {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2) var(--space-4);
+
+  @media (min-width: 768px) {
+    gap: var(--space-8);
+  }
+}
+
+.nav-link,
+.page-link {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  color: var(--color-secondary);
+  text-decoration: none;
+  padding: var(--space-2) var(--space-3);
+  min-height: 44px; // Touch-friendly
+  display: inline-flex;
+  align-items: center;
+  transition: color var(--transition-fast);
+
+  &:hover,
+  &:focus {
+    color: var(--color-hover);
+    text-decoration: underline;
+  }
+
+  @media (min-width: 768px) {
+    padding: var(--space-2) 0;
+    min-height: auto;
+  }
+}
+

@@ -1,0 +1,276 @@
+// =============================================================================
+// PHASE 5: MOBILE EXCELLENCE
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// GLOBAL TOUCH OPTIMIZATIONS
+// ---------------------------------------------------------------------------
+
+// Remove 300ms tap delay on all interactive elements
+a, button, input, select, textarea, [role="button"] {
+  touch-action: manipulation;
+}
+
+// Ensure minimum touch target size (48x48px)
+.btn,
+a.btn,
+.nav-link,
+.page-link,
+.hamburger,
+.mobile-nav-link {
+  min-height: 48px;
+  min-width: 48px;
+}
+
+// Touch feedback - tap highlight color
+a, button, .card, .btn {
+  -webkit-tap-highlight-color: rgba(57, 255, 20, 0.15);
+}
+
+// ---------------------------------------------------------------------------
+// HAMBURGER BUTTON - Mobile menu toggle
+// ---------------------------------------------------------------------------
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 48px;
+  height: 48px;
+  padding: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: var(--z-controls);
+  transition: transform 0.2s ease;
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  @media (max-width: 767px) {
+    display: flex;
+  }
+}
+
+.hamburger-line {
+  width: 24px;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 1px;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease,
+    background 0.25s ease;
+}
+
+// Hamburger to X transformation
+.hamburger[aria-expanded="true"] {
+  .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// MOBILE NAVIGATION - Left-side drawer
+// ---------------------------------------------------------------------------
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-overlay);
+  visibility: hidden;
+
+  // Backdrop - grays out page content heavily
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.92); // Very dark to gray out page
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+}
+
+.mobile-nav[aria-hidden="false"] {
+  visibility: visible;
+
+  &::before {
+    opacity: 1;
+  }
+
+  .mobile-nav-drawer {
+    transform: translateX(0);
+  }
+}
+
+.mobile-nav-drawer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 280px;
+  max-width: 85vw;
+  background-color: var(--bg-surface);
+  border-right: 2px solid var(--color-primary);
+  box-shadow: 4px 0 32px rgba(0, 0, 0, 0.8);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  overflow: visible;
+  padding: 0;
+}
+
+.mobile-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-surface);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-content);
+}
+
+.mobile-nav-title {
+  font-family: var(--font-mono);
+  color: var(--color-primary);
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.mobile-nav-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.75rem;
+  line-height: 1;
+  padding: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover,
+  &:focus {
+    color: var(--color-primary);
+  }
+}
+
+.mobile-nav-content {
+  display: block;
+  padding: 16px 0;
+  background-color: var(--bg-surface);
+  visibility: visible;
+  opacity: 1;
+  height: auto;
+  max-height: none;
+}
+
+.mobile-nav-link {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  height: auto;
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 12px 16px;
+  line-height: 1.4;
+
+  &:hover,
+  &:focus {
+    color: var(--color-primary);
+    background: var(--bg-elevated);
+    text-decoration: none;
+  }
+}
+
+.mobile-nav-prefix {
+  color: var(--color-primary);
+  margin-right: 8px;
+}
+
+// ---------------------------------------------------------------------------
+// DESKTOP NAVIGATION - Hide hamburger, show nav
+// ---------------------------------------------------------------------------
+
+.site-nav--desktop {
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// TOUCH-SPECIFIC FEEDBACK STYLES
+// ---------------------------------------------------------------------------
+
+@media (max-width: 767px) {
+  // Enhanced button touch states
+  .btn,
+  a.btn {
+    &:active {
+      transform: scale(0.97);
+      opacity: 0.9;
+      transition-duration: 0.05s;
+    }
+  }
+
+  // Card touch feedback
+  .card {
+    &:active {
+      transform: scale(0.98);
+      opacity: 0.95;
+      transition-duration: 0.05s;
+    }
+  }
+
+  // Link touch feedback
+  a:not(.btn):not(.nav-link):not(.site-title):not(.card) {
+    &:active {
+      opacity: 0.7;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// BODY SCROLL LOCK - When mobile nav is open
+// ---------------------------------------------------------------------------
+
+body.nav-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+// ---------------------------------------------------------------------------
+// FOOTER TOUCH TARGETS
+// ---------------------------------------------------------------------------
+
+.site-footer a {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+}
+

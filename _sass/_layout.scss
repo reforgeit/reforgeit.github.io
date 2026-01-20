@@ -1,0 +1,28 @@
+// =============================================================================
+// LAYOUT - Generous Spacing System
+// =============================================================================
+
+.wrapper {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+
+  @media (min-width: 768px) {
+    padding: 0 var(--space-8);
+  }
+}
+
+.wrapper--wide {
+  max-width: var(--content-max-width-wide);
+}
+
+.page-content {
+  // Generous vertical padding for luxury feel
+  padding: var(--section-padding-mobile) 0;
+  min-height: calc(100vh - 200px);
+
+  @media (min-width: 768px) {
+    padding: var(--section-padding) 0;
+  }
+}
+
