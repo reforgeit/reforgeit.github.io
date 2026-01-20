@@ -146,6 +146,19 @@
   // Inset shadows (for pressed states)
   --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.3);
 
+  // =========================================================================
+  // Z-INDEX SYSTEM - Semantic layering system
+  // =========================================================================
+
+  --z-behind: -1;      // Background effects (gradient orbs, patterns)
+  --z-base: 0;         // Base layer for animated elements
+  --z-content: 1;      // Content above base (hero content, sticky elements)
+  --z-header: 100;     // Sticky site header
+  --z-controls: 200;   // Interactive controls (hamburger, buttons)
+  --z-skip-link: 1000; // Accessibility skip-to-content link
+  --z-overlay: 9000;   // Modal/drawer overlays (mobile nav)
+  --z-top: 9999;       // Always on top (noise texture, debugging)
+
   // Legacy spacing (for compatibility)
   --spacing-sm: var(--space-2);
   --spacing-md: var(--space-4);
@@ -165,7 +178,7 @@
   background: var(--color-primary);
   color: var(--bg-primary);
   padding: var(--spacing-sm) var(--spacing-md);
-  z-index: 1000;
+  z-index: var(--z-skip-link);
   font-family: var(--font-heading);
 
   &:focus {
@@ -613,7 +626,7 @@ a.btn {
   padding: var(--space-4) 0;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: var(--z-header);
   transition:
     background-color 0.3s ease,
     box-shadow 0.3s ease;
@@ -863,7 +876,7 @@ body {
     right: 0;
     bottom: 0;
     pointer-events: none;
-    z-index: -1;
+    z-index: var(--z-behind);
     background:
       // Primary glow orb (top right)
       radial-gradient(
@@ -893,7 +906,7 @@ body {
   height: 100%;
   pointer-events: none;
   opacity: 0.015;
-  z-index: 9999;
+  z-index: var(--z-top);
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
 }
 
@@ -950,7 +963,7 @@ body {
   border-radius: 50%;
   filter: blur(80px);
   pointer-events: none;
-  z-index: 0;
+  z-index: var(--z-base);
   animation: float 20s ease-in-out infinite;
 
   &--primary {
@@ -1031,7 +1044,7 @@ body {
 .hero-content {
   max-width: 720px;
   width: 100%;
-  z-index: 1;
+  z-index: var(--z-content);
 }
 
 // ---------------------------------------------------------------------------
@@ -1738,7 +1751,7 @@ a, button, .card, .btn {
   background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 200;
+  z-index: var(--z-controls);
   transition: transform 0.2s ease;
 
   &:active {
@@ -1785,7 +1798,7 @@ a, button, .card, .btn {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 9000;
+  z-index: var(--z-overlay);
   visibility: hidden;
 
   // Backdrop - grays out page content heavily
@@ -1841,7 +1854,7 @@ a, button, .card, .btn {
   background-color: var(--bg-surface);
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: var(--z-content);
 }
 
 .mobile-nav-title {
