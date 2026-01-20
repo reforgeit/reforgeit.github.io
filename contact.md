@@ -6,7 +6,7 @@ permalink: /contact/
 
 ## Let's Talk
 
-Whether you have a specific project in mind or just want to explore options, I'm happy to chat.
+Got a project? Questions? Just reach out.
 
 ### Email
 
@@ -22,7 +22,7 @@ Connect professionally:
 
 ### Location & Availability
 
-**Location:** Warsaw, Poland (CET/CEST timezone)
+**Location:** Poznan, Poland (CET/CEST timezone)
 
 **Remote:** Available for remote work globally
 

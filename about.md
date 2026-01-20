@@ -4,18 +4,18 @@ title: "About"
 permalink: /about/
 ---
 
-I'm Milosz Czajkowski, a DevOps Technical Lead currently at Keyloop in Warsaw. I specialize in building internal developer platforms and helping teams scale their cloud infrastructure.
+I'm Milosz Czajkowski, a DevOps Technical Lead at Keyloop (remotely). I build internal developer platforms and fix the infrastructure problems that slow teams down.
 
 ## Background
 
-My journey started with a Mathematics degree from Adam Mickiewicz University, which gave me a strong foundation in problem-solving and systems thinking. I transitioned into tech through consulting roles before focusing on DevOps and cloud infrastructure.
+Mathematics degree from Adam Mickiewicz University, then consulting, then DevOps. The math background means I'm comfortable with complexity, yet I prefer eliminating it.
 
 ## How I Work
 
-- **Collaborative** — I work with your team, not around them
-- **Documentation-first** — Everything is documented for knowledge transfer
-- **Pragmatic** — Right-sized solutions, not over-engineering
-- **Async-friendly** — Comfortable with remote, timezone-distributed work
+- **With your team** — I pair with your engineers, not disappear into a silo
+- **Documentation-first** — If it's not written down, it didn't happen
+- **Keep it simple** — I'd rather delete code than add abstractions
+- **Async-friendly** — Remote work across timezones is my default
 
 ## Credentials
 

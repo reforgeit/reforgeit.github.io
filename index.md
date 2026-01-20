@@ -2,7 +2,7 @@
 layout: home
 title: "Milosz Czajkowski | DevOps Consultant"
 hero_title: "DevOps Consultant"
-hero_tagline: "I help engineering teams build and scale cloud infrastructure with modern DevOps practices."
+hero_tagline: "I build the infrastructure that lets your team deploy on Friday without sweating."
 ---
 
 ## What I Do
@@ -13,6 +13,6 @@ hero_tagline: "I help engineering teams build and scale cloud infrastructure wit
 
 ## About Me
 
-Currently DevOps Technical Lead at Keyloop, where I build internal developer platforms that help teams ship faster. With experience spanning cloud architecture, container orchestration, and platform engineering, I focus on practical solutions that scale.
+DevOps Technical Lead at Keyloop. I build internal developer platforms — the tools that make other engineers' lives easier. Less YAML debugging, more shipping.
 
 <a href="/about/" class="btn btn-secondary">About Me</a>

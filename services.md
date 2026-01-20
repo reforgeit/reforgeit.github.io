@@ -4,13 +4,13 @@ title: "Services"
 permalink: /services/
 ---
 
-I help engineering teams build scalable, reliable cloud infrastructure. Whether you need a quick audit or long-term partnership, I can help.
+I fix infrastructure that's slowing your team down and build the systems that let you move faster.
 
 ---
 
 ## Infrastructure Audit
 
-A comprehensive review of your current cloud and DevOps setup with actionable recommendations.
+I review your cloud and DevOps setup, find what's broken or risky, and tell you how to fix it.
 
 **Deliverables:**
 - Architecture diagram of current state
@@ -27,7 +27,7 @@ A comprehensive review of your current cloud and DevOps setup with actionable re
 Hands-on building of infrastructure, pipelines, and platforms.
 
 **Example Projects:**
-- Kubernetes cluster setup and migration
+- Kubernetes cluster setup and optimization
 - CI/CD pipeline design and implementation
 - Infrastructure as Code (Terraform) rollout
 - Monitoring and observability setup
