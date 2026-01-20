@@ -4,7 +4,7 @@ title: "About"
 permalink: /about/
 ---
 
-I'm Milosz Czajkowski, a DevOps Technical Lead at Keyloop (remotely). I build internal developer platforms and fix the infrastructure problems that slow teams down.
+I'm Milosz Czajkowski, a DevOps Technical Lead working remotely. I build internal developer platforms and fix the infrastructure problems that slow teams down.
 
 ## Background
 
@@ -16,6 +16,14 @@ Mathematics degree from Adam Mickiewicz University, then consulting, then DevOps
 - **Documentation-first** — If it's not written down, it didn't happen
 - **Keep it simple** — I'd rather delete code than add abstractions
 - **Async-friendly** — Remote work across timezones is my default
+
+## Selected Work
+
+- **Internal Developer Platform** — Designed and built a platform on AWS EKS with ArgoCD, Terraform, and Backstage. Now used across the organization for consistent, autonomous deployments.
+- **GitHub Migration** — Migrated hundreds of repos and pipelines from Bitbucket/Bamboo to GitHub. Built shared GitHub Actions templates and a self-service migration tool so teams could move at their own pace.
+- **EKS Operations** — Maintained multiple production EKS clusters: upgrades, Karpenter tuning, ALB/external-DNS controllers, WAF troubleshooting. Kept things stable while the platform scaled.
+- **IaC & Observability** — Built Terraform and Helm-based infrastructure for AWS and Kubernetes. Set up and maintained an ELK stack for centralized logging that made debugging production issues straightforward.
+- **Team Enablement** — I build platforms and help teams use them. Documentation, consultations, shared modules, and jumping on calls when deployments go sideways. Teams adopted better patterns because someone showed up and helped.
 
 ## Credentials
 

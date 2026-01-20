@@ -13,6 +13,8 @@ hero_tagline: "I build the infrastructure that lets your team deploy on Friday w
 
 ## About Me
 
-DevOps Technical Lead at Keyloop. I build internal developer platforms — the tools that make other engineers' lives easier. Less YAML debugging, more shipping.
+DevOps Technical Lead building internal developer platforms. I built a platform on AWS EKS that became the company standard. Consistent deployments, less firefighting. Before that, I migrated hundreds of repos and pipelines to GitHub.
+
+Less YAML debugging, more shipping.
 
 <a href="/about/" class="btn btn-secondary">About Me</a>

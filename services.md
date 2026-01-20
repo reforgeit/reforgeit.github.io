@@ -24,7 +24,7 @@ I review your cloud and DevOps setup, find what's broken or risky, and tell you 
 
 ## Implementation
 
-Hands-on building of infrastructure, pipelines, and platforms.
+Hands-on building of infrastructure, pipelines, and platforms. I've done this at scale: a company-wide GitHub migration and 30+ teams onboarded to a unified platform.
 
 **Example Projects:**
 - Kubernetes cluster setup and optimization
@@ -39,13 +39,13 @@ Hands-on building of infrastructure, pipelines, and platforms.
 
 ## Advisory & Retainer
 
-Ongoing access for guidance, support, and strategic input.
+Ongoing access for guidance, support, and someone who picks up when things break. I've supported teams across multiple organizations and know how to help without taking over.
 
 **Includes:**
-- Regular architecture reviews
-- On-call support for incidents
-- Team mentoring and knowledge transfer
-- Technology selection guidance
+- Architecture reviews and tech decisions
+- On-call support when deployments go sideways
+- Team mentoring (I'll pair with your engineers)
+- Shared modules, templates, and documentation
 
 **Timeline:** Monthly engagement
 
