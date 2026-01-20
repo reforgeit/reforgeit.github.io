@@ -1656,9 +1656,8 @@ a:not(.btn):not(.nav-link):not(.page-link):not(.site-title):not(.card) {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-delay: 0ms !important;
-    transition-duration: 0.01ms !important;
+    animation: none !important;
+    transition: none !important;
     scroll-behavior: auto !important;
   }
 
