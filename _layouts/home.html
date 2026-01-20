@@ -1,31 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'en' }}">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Theme color for browser UI -->
-  <meta name="theme-color" content="#0d1117">
-  <meta name="msapplication-TileColor" content="#0d1117">
-
-  <!-- Apple-specific meta tags -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
-
-  <!-- Google Fonts: Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-
-  {% seo %}
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  {% feed_meta %}
+  {% include head.html %}
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
