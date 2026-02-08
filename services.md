@@ -4,51 +4,55 @@ title: "Services"
 permalink: /services/
 ---
 
-I fix infrastructure that's slowing your team down and build the systems that let you move faster.
+I fix infrastructure that's slowing your team down and build the systems that let you ship faster.
 
----
+<div class="service-card" markdown="1">
 
 ## Infrastructure Audit
 
-I review your cloud and DevOps setup, find what's broken or risky, and tell you how to fix it.
+I review your cloud and DevOps setup. I find the problems and the waste, then give you a concrete plan to fix it.
 
-**Deliverables:**
-- Architecture diagram of current state
+**What you get:**
+- Architecture diagram of your current state
 - Written findings with severity ratings
 - Prioritized recommendations roadmap
-- Presentation and walkthrough session
+- Walkthrough session with your team
 
-**Timeline:** 1-2 weeks
+**Timeline:** 1–2 weeks
 
----
+</div>
+
+<div class="service-card" markdown="1">
 
 ## Implementation
 
-Hands-on building of infrastructure, pipelines, and platforms. I've done this at scale: a company-wide GitHub migration and 30+ teams onboarded to a unified platform.
+I build infrastructure, pipelines, and platforms. I've done this at scale: a company-wide platform serving 30+ teams, a migration of hundreds of repos, production Kubernetes clusters handling real traffic.
 
-**Example Projects:**
+**Example projects:**
 - Kubernetes cluster setup and optimization
-- CI/CD pipeline design and implementation
-- Infrastructure as Code (Terraform) rollout
-- Monitoring and observability setup
+- CI/CD pipeline design (GitHub Actions, ArgoCD)
+- Infrastructure as Code rollout (Terraform)
+- Monitoring and observability (NewRelic, ELK)
 - Internal Developer Platform development
 
-**Timeline:** Project-dependent, typically 1-3 months
+**Timeline:** 1–3 months, depending on scope
 
----
+</div>
+
+<div class="service-card" markdown="1">
 
 ## Advisory & Retainer
 
-Ongoing access for guidance, support, and someone who picks up when things break. I've supported teams across multiple organizations and know how to help without taking over.
+Ongoing access to a senior DevOps engineer who knows your stack. I review architecture decisions, debug production issues alongside your team, and help your engineers handle it themselves next time.
 
-**Includes:**
-- Architecture reviews and tech decisions
-- On-call support when deployments go sideways
-- Team mentoring (I'll pair with your engineers)
+**What's included:**
+- Architecture reviews and technical guidance
+- On-call support when deployments break
+- Pair sessions with your engineers
 - Shared modules, templates, and documentation
 
 **Timeline:** Monthly engagement
 
----
+</div>
 
-Not sure which option fits? [Let's talk about your specific situation](/contact/).
+Not sure which fits? [Let's figure it out together](/contact/).

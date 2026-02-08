@@ -6,28 +6,30 @@ permalink: /contact/
 
 ## Let's Talk
 
-Got a project? Questions? Just reach out.
+If your deployments are painful or your infrastructure is held together with duct tape, I've probably seen it before. Send me a message.
 
-### Email
+<div class="contact-grid">
 
-For inquiries and async communication:
+<div class="card card--compact">
+<h3 class="card-title">Email</h3>
+<div class="card-content">
+<p>I check email daily.</p>
+<p><a href="mailto:milosz.czajkowski.reforgeit@gmail.com">milosz.czajkowski.reforgeit@gmail.com</a></p>
+</div>
+</div>
 
-[milosz.czajkowski.reforgeit@gmail.com](mailto:milosz.czajkowski.reforgeit@gmail.com)
+<div class="card card--compact">
+<h3 class="card-title">LinkedIn</h3>
+<div class="card-content">
+<p>I usually reply same-day on LinkedIn.</p>
+<p><a href="https://linkedin.com/in/milosz-czajkowski">linkedin.com/in/milosz-czajkowski</a></p>
+</div>
+</div>
 
-### LinkedIn
+</div>
 
-Connect professionally:
+### Where I Am
 
-[linkedin.com/in/milosz-czajkowski](https://linkedin.com/in/milosz-czajkowski)
+**Poznan, Poland** (CET/CEST timezone). Available for remote work globally.
 
-### Location & Availability
-
-**Location:** Poznan, Poland (CET/CEST timezone)
-
-**Remote:** Available for remote work globally
-
-**Response time:** I typically respond within 24-48 hours
-
----
-
-For urgent matters, LinkedIn messages often get faster responses than email.
+I typically respond within 24 hours.

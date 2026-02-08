@@ -13,8 +13,8 @@ hero_tagline: "I build the infrastructure that lets your team deploy on Friday w
 
 ## About Me
 
-DevOps Technical Lead building internal developer platforms. I built a platform on AWS EKS that became the company standard. Consistent deployments, less firefighting. Before that, I migrated hundreds of repos and pipelines to GitHub.
+I've spent 8+ years building infrastructure across defense (BAE Systems), finance (GFT), and automotive (Keyloop). Currently a DevOps Technical Lead.
 
-Less YAML debugging, more shipping.
+I built a platform on AWS EKS that 30+ teams now use for autonomous deployments. Before that, I migrated hundreds of repos and CI/CD pipelines from Bitbucket to GitHub. Every role was the same job underneath: take broken infrastructure and make it work for people.
 
-<a href="/about/" class="btn btn-secondary">About Me</a>
+<a href="/about/" class="btn btn-secondary">More About Me</a>

@@ -17,7 +17,7 @@
 }
 
 // =============================================================================
-// SERVICE SECTIONS (left border accent)
+// SECTION HEADINGS (left border accent)
 // =============================================================================
 
 .page-content h2 {
@@ -39,6 +39,224 @@
   padding: var(--space-1) var(--space-2);
   border-radius: 3px;
   letter-spacing: var(--tracking-wide);
+}
+
+// =============================================================================
+// SKILL TAGS
+// =============================================================================
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  list-style: none;
+  padding: 0;
+  margin: var(--space-6) 0;
+
+  li {
+    padding: 0;
+    margin: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.skill-tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  border: 1px solid rgba(57, 255, 20, 0.3);
+  padding: var(--space-2) var(--space-4);
+  border-radius: 4px;
+  background: rgba(57, 255, 20, 0.05);
+  transition: all var(--transition-fast);
+  letter-spacing: var(--tracking-wide);
+
+  &:hover {
+    border-color: var(--color-primary);
+    background: rgba(57, 255, 20, 0.1);
+    box-shadow: 0 0 12px var(--glow-primary-subtle);
+    text-shadow: 0 0 8px var(--glow-primary);
+  }
+}
+
+// =============================================================================
+// CAREER TIMELINE
+// =============================================================================
+
+.timeline {
+  position: relative;
+  padding-left: var(--space-8);
+  margin: var(--space-8) 0;
+
+  // Vertical line
+  &::before {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 8px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--color-primary), var(--border-color) 80%);
+  }
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: var(--space-10);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  // Dot on the timeline
+  &::before {
+    content: '';
+    position: absolute;
+    left: calc(-1 * var(--space-8) - 1px);
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--color-primary);
+    background: var(--bg-primary);
+    z-index: 1;
+  }
+
+  // Current role: filled glowing dot
+  &:first-child::before {
+    background: var(--color-primary);
+    box-shadow: 0 0 10px var(--glow-primary);
+  }
+
+  p {
+    margin-top: var(--space-2);
+    margin-bottom: 0;
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    line-height: var(--leading-relaxed);
+  }
+}
+
+.timeline-date {
+  display: block;
+  color: var(--text-muted);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+
+.timeline-title {
+  color: var(--color-secondary);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  margin: var(--space-1) 0 var(--space-1);
+  line-height: var(--leading-tight);
+  // Override default h3 margin
+  margin-top: var(--space-1);
+}
+
+.timeline-company {
+  display: block;
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-2);
+}
+
+@media (max-width: 767px) {
+  .timeline {
+    padding-left: var(--space-6);
+  }
+
+  .timeline-item::before {
+    left: calc(-1 * var(--space-6) - 1px);
+    width: 8px;
+    height: 8px;
+  }
+
+  .timeline-title {
+    font-size: var(--font-size-base);
+  }
+}
+
+// =============================================================================
+// SERVICE CARDS
+// =============================================================================
+
+.service-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: var(--space-8);
+  margin: var(--space-8) 0;
+  transition: border-color 0.25s ease;
+
+  &:hover {
+    border-color: rgba(57, 255, 20, 0.3);
+  }
+
+  // Override the default h2 left-border inside cards
+  h2 {
+    margin-top: 0;
+    border-left: none;
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  // Tighter list spacing inside service cards
+  ul {
+    margin: var(--space-4) 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .service-card {
+    padding: var(--space-6);
+  }
+}
+
+// =============================================================================
+// CONTACT GRID
+// =============================================================================
+
+.contact-grid {
+  display: grid;
+  gap: var(--space-6);
+  margin: var(--space-8) 0;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card {
+    // Override default h3 margins inside cards
+    h3 {
+      margin-top: 0;
+    }
+
+    // Make the links stand out
+    a {
+      word-break: break-all;
+    }
+  }
+}
+
+// =============================================================================
+// CARD OVERRIDES FOR PAGE CONTENT
+// =============================================================================
+
+// Cards inside page content: override h3 default margins
+.page-body .card .card-title {
+  margin-top: 0;
+}
+
+// Card grid inside page content
+.page-body .card-grid {
+  margin: var(--space-8) 0;
 }
 
 // =============================================================================
@@ -94,4 +312,3 @@
     font-size: var(--font-size-5xl);
   }
 }
-
