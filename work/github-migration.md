@@ -10,11 +10,11 @@ The codebase lived in Bitbucket with Bamboo for CI/CD. The company decided to mo
 
 Teams deployed to three different targets:
 
-- **ECS** using JavaScript AWS CDK
-- **S3 + CloudFront** for static assets
+- **ECS** via CloudFormation, synthesized from AWS CDK (JavaScript)
+- **S3 + CloudFront** for static assets, deployed via a custom Serverless Framework plugin
 - **API Gateway + Lambda** using Serverless Framework
 
-The CI/CD setup was Bamboo. The previous DevOps team had written pipeline definitions as Java specs -- Bamboo's Java library for defining plans in code. It worked, but it was ugly and hard to maintain. I'd already pushed for moving to Bamboo YAML specs as an improvement, which helped, but the company then decided to go all the way to GitHub Actions.
+The CI/CD setup was Bamboo. Pipeline definitions had been written as Java specs -- Bamboo's Java library for defining plans in code. It worked, but it was ugly and hard to maintain. I'd already pushed for moving to Bamboo YAML specs as an improvement, which helped, but the company then decided to go all the way to GitHub Actions.
 
 ## Identifying the use cases
 
@@ -36,7 +36,7 @@ The process for a single repo took a few minutes. The longer part was teams test
 
 ## Self-hosted runners
 
-To support the migration workloads, we started running self-hosted GitHub runners on EKS. This was our first use of EKS at the company. It eventually grew into a full internal developer platform, which I'll write about separately.
+To support the migration workloads, we started running self-hosted GitHub runners on EKS. This was our first use of EKS at the company. It eventually grew into a [full internal developer platform](/work/internal-developer-platform/).
 
 ## What I built vs. the team
 
@@ -48,4 +48,4 @@ GitHub Actions, Backstage, Bitbucket, Bamboo, AWS CDK, Serverless Framework, Clo
 
 ---
 
-<a href="/about/#selected-work" class="btn btn-secondary">&larr; Back to Selected Work</a>
+<a href="/work/" class="btn btn-secondary">&larr; Back to Selected Work</a>
