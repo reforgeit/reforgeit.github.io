@@ -48,23 +48,23 @@ I started in defense tech at BAE Systems, maintaining CI/CD for enterprise syste
 - **Less is more** -- I'd rather delete code than add abstractions
 - **Async-native** -- remote work across timezones is my default mode
 
-## Selected Work
+## Selected Work {#selected-work}
 
 <div class="card-grid">
-  <a href="/blog/building-internal-developer-platform-aws-eks/" class="card card--accent card--interactive">
+  <a href="/work/internal-developer-platform/" class="card card--accent card--interactive">
     <h3 class="card-title">Internal Developer Platform</h3>
     <div class="card-content">
       <p>Designed and built a platform on AWS EKS with ArgoCD, Terraform, and Backstage. Adopted company-wide. 30+ teams now deploy autonomously.</p>
     </div>
     <div class="card-meta">Keyloop · AWS EKS, ArgoCD, Terraform, Backstage</div>
   </a>
-  <div class="card card--accent">
+  <a href="/work/github-migration/" class="card card--accent card--interactive">
     <h3 class="card-title">GitHub Migration</h3>
     <div class="card-content">
       <p>Migrated hundreds of repos and pipelines from Bitbucket/Bamboo to GitHub. Built shared Actions templates and a self-service tool so teams could move at their own pace.</p>
     </div>
     <div class="card-meta">Keyloop · GitHub Actions, Bitbucket, Bamboo</div>
-  </div>
+  </a>
   <div class="card card--accent">
     <h3 class="card-title">EKS Operations at Scale</h3>
     <div class="card-content">
