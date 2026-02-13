@@ -106,6 +106,3 @@ I started in defense tech at BAE Systems, maintaining CI/CD for enterprise syste
   <li><span class="skill-tag">Backstage</span></li>
 </ul>
 
----
-
-[LinkedIn](https://linkedin.com/in/milosz-czajkowski)  |  [Email](mailto:milosz.czajkowski.reforgeit@gmail.com)

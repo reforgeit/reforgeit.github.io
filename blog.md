@@ -19,5 +19,5 @@ Thoughts on DevOps, cloud infrastructure, and platform engineering.
   {% endfor %}
 </ul>
 {% else %}
-Coming soon. Check back later or follow me on [LinkedIn](https://linkedin.com/in/milosz-czajkowski) for updates.
+Coming soon.
 {% endif %}
