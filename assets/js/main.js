@@ -144,29 +144,25 @@
     const text = typedTextEl.textContent;
     const cursor = document.querySelector('.typed-cursor');
 
-    // Check if we've already shown the animation this session
-    const hasAnimated = sessionStorage.getItem('heroAnimated');
+    // Play on fresh navigation, skip on back/forward and reload
+    const navType = performance.getEntriesByType('navigation')[0]?.type;
+    const skipAnimation = navType === 'back_forward' || navType === 'reload';
 
-    if (!hasAnimated) {
-      // Hide text initially
+    if (!skipAnimation) {
       typedTextEl.textContent = '';
       typedTextEl.style.visibility = 'visible';
 
       let charIndex = 0;
-      const typingSpeed = 50; // ms per character
+      const typingSpeed = 50;
 
       function typeChar() {
         if (charIndex < text.length) {
           typedTextEl.textContent += text.charAt(charIndex);
           charIndex++;
           setTimeout(typeChar, typingSpeed);
-        } else {
-          // Animation complete, mark as done for this session
-          sessionStorage.setItem('heroAnimated', 'true');
         }
       }
 
-      // Start typing after a brief delay for page load
       setTimeout(typeChar, 300);
     }
   }
