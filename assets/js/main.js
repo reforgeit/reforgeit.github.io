@@ -144,11 +144,10 @@
     const text = typedTextEl.textContent;
     const cursor = document.querySelector('.typed-cursor');
 
-    // Play on fresh navigation, skip on back/forward and reload
+    // Skip only on browser back/forward (user already saw it moments ago)
     const navType = performance.getEntriesByType('navigation')[0]?.type;
-    const skipAnimation = navType === 'back_forward' || navType === 'reload';
 
-    if (!skipAnimation) {
+    if (navType !== 'back_forward') {
       typedTextEl.textContent = '';
       typedTextEl.style.visibility = 'visible';
 
