@@ -195,15 +195,12 @@
     function cycle() {
       const text = roles[roleIndex % roles.length];
       typeRole(text, () => {
-        // Don't delete the last role — stay on it
-        if (roleIndex < roles.length - 1) {
-          setTimeout(() => {
-            deleteRole(() => {
-              roleIndex++;
-              setTimeout(cycle, PAUSE_BEFORE_TYPE);
-            });
-          }, PAUSE_AFTER_TYPE);
-        }
+        setTimeout(() => {
+          deleteRole(() => {
+            roleIndex++;
+            setTimeout(cycle, PAUSE_BEFORE_TYPE);
+          });
+        }, PAUSE_AFTER_TYPE);
       });
     }
 
