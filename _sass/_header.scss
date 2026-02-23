@@ -112,6 +112,11 @@
     text-decoration: underline;
   }
 
+  &--active,
+  &[aria-current="page"] {
+    color: var(--color-primary);
+  }
+
   @media (min-width: 768px) {
     padding: var(--space-2) 0;
     min-height: auto;

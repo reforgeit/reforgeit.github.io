@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "Services"
+description: "DevOps consulting services: infrastructure audit, implementation (Kubernetes, CI/CD, Terraform), and ongoing advisory retainer. Remote, available globally."
 permalink: /services/
 ---
 

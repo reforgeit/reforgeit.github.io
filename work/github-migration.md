@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "Migrating Hundreds of Repos from Bitbucket to GitHub"
+description: "How we migrated ~150 repos with CI/CD pipelines and hundreds more from Bitbucket/Bamboo to GitHub, using a self-service Backstage tool and reusable GitHub Actions workflows."
 permalink: /work/github-migration/
 ---
 

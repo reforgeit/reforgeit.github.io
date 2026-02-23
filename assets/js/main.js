@@ -64,6 +64,7 @@
   const mobileNav = document.querySelector('.mobile-nav');
   const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
   const mobileNavClose = document.querySelector('.mobile-nav-close');
+  const mobileNavTitle = document.querySelector('.mobile-nav-title');
 
   // Get all focusable elements in mobile nav
   const mobileNavFocusable = mobileNav ? mobileNav.querySelectorAll('a, button') : [];
@@ -117,6 +118,14 @@
       });
     }
 
+    // Title button closes menu
+    if (mobileNavTitle) {
+      mobileNavTitle.addEventListener('click', () => {
+        closeNav();
+        hamburger.focus();
+      });
+    }
+
     // Close on escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && hamburger.getAttribute('aria-expanded') === 'true') {
@@ -125,9 +134,9 @@
       }
     });
 
-    // Close on click outside (on the overlay background)
+    // Close on click outside the drawer
     mobileNav.addEventListener('click', (e) => {
-      if (e.target === mobileNav) {
+      if (!e.target.closest('.mobile-nav-drawer')) {
         closeNav();
       }
     });
@@ -141,28 +150,66 @@
   const typedTextEl = document.querySelector('.typed-text');
 
   if (typedTextEl && motionAllowed()) {
-    const text = typedTextEl.textContent;
-    const cursor = document.querySelector('.typed-cursor');
+    const roles = [
+      typedTextEl.textContent.trim(),
+      'Cloud Engineer',
+      'Platform Engineer',
+      'Technical Lead',
+    ];
 
-    // Skip only on browser back/forward (user already saw it moments ago)
     const navType = performance.getEntriesByType('navigation')[0]?.type;
+    const TYPING_SPEED = 50;   // ms per char typed
+    const DELETING_SPEED = 30; // ms per char deleted
+    const PAUSE_AFTER_TYPE = 2500; // ms to display before deleting
+    const PAUSE_BEFORE_TYPE = 400; // ms after deletion before typing next
+
+    let roleIndex = 0;
+
+    function typeRole(text, onDone) {
+      typedTextEl.textContent = '';
+      let i = 0;
+      function step() {
+        if (i < text.length) {
+          typedTextEl.textContent += text.charAt(i++);
+          setTimeout(step, TYPING_SPEED);
+        } else {
+          onDone();
+        }
+      }
+      step();
+    }
+
+    function deleteRole(onDone) {
+      function step() {
+        const current = typedTextEl.textContent;
+        if (current.length > 0) {
+          typedTextEl.textContent = current.slice(0, -1);
+          setTimeout(step, DELETING_SPEED);
+        } else {
+          onDone();
+        }
+      }
+      step();
+    }
+
+    function cycle() {
+      const text = roles[roleIndex % roles.length];
+      typeRole(text, () => {
+        // Don't delete the last role — stay on it
+        if (roleIndex < roles.length - 1) {
+          setTimeout(() => {
+            deleteRole(() => {
+              roleIndex++;
+              setTimeout(cycle, PAUSE_BEFORE_TYPE);
+            });
+          }, PAUSE_AFTER_TYPE);
+        }
+      });
+    }
 
     if (navType !== 'back_forward') {
       typedTextEl.textContent = '';
-      typedTextEl.style.visibility = 'visible';
-
-      let charIndex = 0;
-      const typingSpeed = 50;
-
-      function typeChar() {
-        if (charIndex < text.length) {
-          typedTextEl.textContent += text.charAt(charIndex);
-          charIndex++;
-          setTimeout(typeChar, typingSpeed);
-        }
-      }
-
-      setTimeout(typeChar, 300);
+      setTimeout(cycle, 300);
     }
   }
 

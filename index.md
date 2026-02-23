@@ -1,6 +1,7 @@
 ---
 layout: home
 title: "Milosz Czajkowski | DevOps Consultant"
+description: "DevOps consultant and Technical Lead based in Poznan, Poland. Specialising in AWS, Kubernetes, Terraform, and platform engineering. Available for consulting engagements."
 hero_title: "DevOps Consultant"
 hero_tagline: "I build the infrastructure that lets your team deploy on Friday without sweating."
 ---

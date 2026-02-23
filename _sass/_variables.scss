@@ -17,7 +17,7 @@
   // Accent colors
   --color-primary: #39ff14;    // Neon green
   --color-secondary: #00ffff;  // Cyan
-  --color-hover: #ff00ff;      // Magenta
+  --color-hover: #39ff14;      // Neon green (same as primary)
   --color-warning: #ff8c00;    // Orange
 
   // Text colors
@@ -33,7 +33,7 @@
   --glow-primary-subtle: rgba(57, 255, 20, 0.15);
   --glow-secondary: rgba(0, 255, 255, 0.3);
   --glow-secondary-intense: rgba(0, 255, 255, 0.5);
-  --glow-hover: rgba(255, 0, 255, 0.3);
+  --glow-hover: rgba(57, 255, 20, 0.3);
 
   // Gradients
   --gradient-text: linear-gradient(135deg, var(--color-primary), var(--color-secondary));

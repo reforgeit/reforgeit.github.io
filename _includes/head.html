@@ -15,11 +15,34 @@
 <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
 <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
 
-<!-- Google Fonts: Preconnect for performance -->
+<!-- Google Fonts: async load to avoid render-blocking -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Share+Tech+Mono&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Share+Tech+Mono&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Share+Tech+Mono&display=swap"></noscript>
 
 {% seo %}
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 {% feed_meta %}
+
+<!-- Structured data: Person -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "{{ site.author.name }}",
+  "jobTitle": "{{ site.tagline }}",
+  "url": "{{ site.url }}",
+  "sameAs": [
+    "https://linkedin.com/in/{{ site.author.linkedin }}",
+    "https://github.com/{{ site.author.github }}"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Poznan",
+    "addressCountry": "PL"
+  },
+  "knowsAbout": ["AWS", "Kubernetes", "Terraform", "DevOps", "Platform Engineering", "GitHub Actions", "ArgoCD"]
+}
+</script>

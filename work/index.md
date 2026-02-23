@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "Selected Work"
+description: "Portfolio of DevOps and platform engineering projects: internal developer platform on AWS EKS, GitHub migration, Kubernetes operations at scale, and IaC stack."
 permalink: /work/
 ---
 

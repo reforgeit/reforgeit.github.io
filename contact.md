@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "Contact"
+description: "Get in touch with Milosz Czajkowski for DevOps consulting. Available via email or LinkedIn. Based in Poznan, Poland. Remote work globally."
 permalink: /contact/
 ---
 

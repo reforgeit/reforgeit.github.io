@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "Building an Internal Developer Platform on AWS EKS"
+description: "How a team of 5–7 engineers designed and built an internal developer platform on AWS EKS with ArgoCD, Terraform, and Backstage. Now used by 30+ teams."
 permalink: /work/internal-developer-platform/
 ---
 

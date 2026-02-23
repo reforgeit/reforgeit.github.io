@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "About"
+description: "Milosz Czajkowski — DevOps Technical Lead with 8+ years building cloud infrastructure across defence, finance, and automotive. Based in Poznan, Poland."
 permalink: /about/
 ---
 

@@ -33,7 +33,7 @@
           <!-- Main headline with gradient and typing effect -->
           <h1 id="hero-heading" class="hero-title">
             <span class="hero-title-prefix" aria-hidden="true">&gt; </span>
-            <span class="gradient-text typed-text" data-text="{{ page.hero_title | default: 'DevOps Technical Lead & Consultant' }}">{{ page.hero_title | default: 'DevOps Technical Lead & Consultant' }}</span>
+            <span class="gradient-text typed-text" aria-live="off" data-text="{{ page.hero_title | default: 'DevOps Technical Lead & Consultant' }}">{{ page.hero_title | default: 'DevOps Technical Lead & Consultant' }}</span>
             <span class="typed-cursor" aria-hidden="true">_</span>
           </h1>
 
@@ -44,8 +44,7 @@
 
           <!-- CTA buttons -->
           <div class="hero-cta animate-on-scroll">
-            <a href="/services/" class="btn">View Services</a>
-            <a href="/contact/" class="btn btn-secondary">Get in Touch</a>
+            <a href="/contact/" class="btn">Get in Touch</a>
           </div>
         </div>
       </div>
